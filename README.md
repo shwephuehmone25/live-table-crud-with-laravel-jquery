@@ -69,7 +69,7 @@ php artisan migrate
 
 **(Optional)** If you want to get dummy data, run this:
 ```
-php artisan db:seed --class=DatabaseSeeder
+php artisan db:seed --class=ProductSeeder
 ```
 ## Server Run
 
