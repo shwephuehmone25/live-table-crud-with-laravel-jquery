@@ -11,7 +11,7 @@
   <div class="container box">
    <h3 align="center">Laravel CRUD with Ajax</h3><br />
    <div class="panel panel-default">
-    <div class="panel-heading">Products</div>
+    <div class="panel-heading">Products Lists</div>
     <div class="panel-body">
      <div id="message"></div>
      <div class="table-responsive">
@@ -38,6 +38,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
+
+    /**Get All products */
 getAllProducts();
 
 function getAllProducts()
@@ -52,11 +54,11 @@ function getAllProducts()
    products += '<td contenteditable id="name"></td>';
    products += '<td contenteditable id="description"></td>';
    products += '<td contenteditable id="price"></td>';
-   products += '<td><button type="button" class="btn btn-primary btn-xs" id="addBtn">Create</button></td></tr>';
+   products += '<td><button type="button" class="btn btn-primary btn-xs" id="addBtn">Add</button></td></tr>';
    for(var count=0; count < data.length; count++)
    {
     products +='<tr>';
-    products +='<td contenteditable class="column_name" data-column_name="name" data-id="'+data[count].id+'">'+data[count].name+'</td>';
+    products +='<td contenteditable class="column_name text-capitalize" data-column_name="name" data-id="'+data[count].id+'">'+data[count].name+'</td>';
     products += '<td contenteditable class="column_name" data-column_name="description" data-id="'+data[count].id+'">'+data[count].description+'</td>';
     products += '<td contenteditable class="column_name" data-column_name="price" data-id="'+data[count].id+'">'+data[count].price+'</td>';
     products += '<td><button type="button" class="btn btn-danger btn-xs delete" id="'+data[count].id+'">Delete</button></td></tr>';
@@ -66,6 +68,7 @@ function getAllProducts()
  });
 }
 
+/**Store newly created product */
 var _token = $('input[name="_token"]').val();
 
 $(document).on('click', '#addBtn', function(){
@@ -87,10 +90,18 @@ $(document).on('click', '#addBtn', function(){
  }
  else
  {
-  $('#message').html("<div class='alert alert-danger'>Both Fields are required</div>");
+  $('#message').html("<div class='alert alert-danger'>The Fields are required<i class='icon fas fa-xmark'></i></div>");
  }
 });
 
+/**Hide error message */
+$(document).ready(function() {
+        $("#message").click(function() {
+            $(".alert").hide();
+        });
+    });
+
+    /**Update product */
 $(document).on('blur', '.column_name', function(){
  var column_name = $(this).data("column_name");
  var column_value = $(this).text();
@@ -110,13 +121,14 @@ $(document).on('blur', '.column_name', function(){
  }
  else
  {
-  $('#message').html("<div class='alert alert-danger'>Enter some value</div>");
+  $('#message').html("<div class='alert alert-danger'>Please enter something<i class='icon fas fa-xmark'></i></div>");
  }
 });
 
+/**Delete product */
 $(document).on('click', '.delete', function(){
  var id = $(this).attr("id");
- if(confirm("Are you sure you want to delete this records?"))
+ if(confirm("Are you sure you want to delete?"))
  {
   $.ajax({
    url:"{{ route('product.delete') }}",
