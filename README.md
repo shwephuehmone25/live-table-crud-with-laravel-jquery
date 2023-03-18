@@ -60,15 +60,6 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Google ID and Secret Key
-```
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-```
-Create Google ID in following link:
-> https://console.cloud.google.com/apis/dashboard 
-<br>
-
 ### Database Migration
 
 Run database migrations:
@@ -82,7 +73,7 @@ php artisan db:seed --class=DatabaseSeeder
 ```
 ## Server Run
 
-Run the dev server:
+Run the server:
 ```
 php artisan serve
 ```
