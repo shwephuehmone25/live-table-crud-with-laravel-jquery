@@ -18,6 +18,7 @@
       <table class="table table-striped table-bordered">
        <thead>
         <tr>
+        <th data-id="productID">ID</th>
          <th>Name</th>
          <th>Description</th>
          <th>Price</th>
@@ -58,6 +59,7 @@ function getAllProducts()
    for(var count=0; count < data.length; count++)
    {
     products +='<tr>';
+    products +='<td contenteditable class="" data-id="'+data[count].id+'">'+data[count].id+'</td>';
     products +='<td contenteditable class="column_name text-capitalize" data-column_name="name" data-id="'+data[count].id+'">'+data[count].name+'</td>';
     products += '<td contenteditable class="column_name" data-column_name="description" data-id="'+data[count].id+'">'+data[count].description+'</td>';
     products += '<td contenteditable class="column_name" data-column_name="price" data-id="'+data[count].id+'">'+data[count].price+'</td>';
