@@ -30,7 +30,7 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 Clone the repo locally:
 ```
-https://github.com/shwephuehmone25/Laravel_Ajax_CRUD_without_modal_box.git
+https://github.com/shwephuehmone25/live-table-crud-with-laravel-jquery.git
 ```
 
 `cd` into cloned directory and install dependencies. run below command one by one.
